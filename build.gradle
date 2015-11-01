@@ -10,13 +10,13 @@ subprojects {
   sourceCompatibility = 1.6
   targetCompatibility = 1.6
 
-  task packageSources(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-
-  }
+//  task packageSources(type: Jar) {
+//    classifier = 'sources'
+//    from sourceSets.main.allSource
+//
+//  }
   
-  artifacts.archives packageSources
+//  artifacts.archives packageSources
   
   repositories {
     mavenLocal()    
@@ -32,3 +32,16 @@ subprojects {
   }
   test.useTestNG()
 }
+
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.0.1"
+  }
+}
+
+apply plugin: "com.dorongold.task-tree"
